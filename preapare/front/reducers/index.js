@@ -3,15 +3,15 @@ import { combineReducers } from 'redux';
 import user from './user';
 import post from './post';
 
-const initialState = {
-  user: {
-  },
-  post: {
-  },
-};
+// const initialState = {
+//   user: {
+//   },
+//   post: {
+//   },
+// };
 
 const rootReducer = combineReducers({
-  index: (state = {}, action) => {
+  index: (state = {}, action = {}) => {
     switch (action.type) {
       case HYDRATE:
         return { ...state, ...action.payload };

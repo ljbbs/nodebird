@@ -13,11 +13,13 @@ import PostCardContent from './PostCardContent';
 import { REMOVE_POST_REQUEST } from '../reducers/post';
 
 function PostCard({ post }) {
+  const dispatch = useDispatch();
+
   const [liked, setLiked] = useState(false);
   const [commentForOpened, setCommentForOpened] = useState(false);
+
   const id = useSelector((state) => state.user.me?.id);
   const { removePostLoading } = useSelector((state) => state.post);
-  const dispatch = useDispatch();
 
   const onToggleLike = useCallback(() => {
     setLiked((prev) => !prev);
