@@ -17,6 +17,14 @@ export const initialState = {
   changeNicknameDone: false,
   changeNicknameError: false,
 
+  followLoading: false,
+  followDone: false,
+  followError: null,
+
+  unfollowLoading: false,
+  unfollowDone: false,
+  unfollowError: null,
+
   me: null,
   signUpData: {},
   loginData: {},
@@ -129,6 +137,36 @@ const reducer = (state = initialState, action = {}) => produce(state, (draft) =>
       break;
     case REMOVE_POST_OF_ME:
       draft.me.Posts = draft.me.Posts.filter((v) => v.id !== action.data);
+      break;
+    case FOLLOW_REQUEST:
+      draft.followLoading = true;
+      draft.followError = null;
+      draft.followDone = false;
+      break;
+    case FOLLOW_SUCCESS:
+      draft.followLoading = false;
+      draft.followDone = true;
+      draft.me.Followings.push({ id: action.data });
+      break;
+    case FOLLOW_FAILURE:
+      draft.followLoading = false;
+      draft.followDone = false;
+      draft.followError = action.error;
+      break;
+    case UNFOLLOW_REQUEST:
+      draft.unfollowLoading = true;
+      draft.unfollowError = null;
+      draft.unfollowDone = false;
+      break;
+    case UNFOLLOW_SUCCESS:
+      draft.unfollowLoading = false;
+      draft.unfollowDone = true;
+      draft.me.Followings = draft.me.Followings.filter((v) => v.id !== action.data);
+      break;
+    case UNFOLLOW_FAILURE:
+      draft.unfollowLoading = false;
+      draft.unfollowDone = false;
+      draft.unfollowError = action.error;
       break;
     default:
       break;

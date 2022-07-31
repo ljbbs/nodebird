@@ -9,7 +9,7 @@ function Home() {
   const dispatch = useDispatch();
 
   const { me } = useSelector((state) => state.user);
-  const { mainPosts, hasMorePost } = useSelector((state) => state.post);
+  const { mainPosts, hasMorePost, loadPostsLoading } = useSelector((state) => state.post);
 
   useEffect(() => {
     dispatch({
@@ -20,8 +20,8 @@ function Home() {
   useEffect(() => {
     function onScroll() {
       if (window.scrollY + document.documentElement.clientHeight
-          >= document.documentElement.scrollHeight) {
-        if (hasMorePost) {
+          > document.documentElement.scrollHeight - 500) {
+        if (hasMorePost && !loadPostsLoading) {
           dispatch({
             type: LOAD_POSTS_REQUEST,
           });
@@ -34,7 +34,7 @@ function Home() {
     return () => {
       window.removeEventListener('scroll', onScroll);
     };
-  }, []);
+  }, [hasMorePost, loadPostsLoading]);
 
   return (
     <AppLayout>
