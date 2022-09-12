@@ -30,25 +30,6 @@ export const initialState = {
   retweetError: null,
 };
 
-// export const generateDummyPost = (number) => Array(number).fill(undefined, undefined, undefined).map(() => ({
-//   id: shortId.generate(),
-//   User: {
-//     id: shortId.generate(),
-//     nickname: faker.name.findName(),
-//   },
-//   content: faker.lorem.paragraph(),
-//   Images: [{
-//     src: faker.image.image(),
-//   }],
-//   Comments: [{
-//     User: {
-//       id: shortId.generate(),
-//       nickname: faker.name.findName(),
-//     },
-//     content: faker.lorem.sentence(),
-//   }],
-// }));
-
 export const UPLOAD_IMAGES_REQUEST = 'UPLOAD_IMAGES_REQUEST';
 export const UPLOAD_IMAGES_SUCCESS = 'UPLOAD_IMAGES_SUCCESS';
 export const UPLOAD_IMAGES_FAILURE = 'UPLOAD_IMAGES_FAILURE';
@@ -168,8 +149,8 @@ const reducer = (state = initialState, action = {}) => produce(state, (draft) =>
     case LOAD_POSTS_SUCCESS:
       draft.loadPostsLoading = false;
       draft.loadPostsDone = true;
-      draft.mainPosts = action.data.concat(draft.mainPosts);
-      draft.hasMorePost = draft.mainPosts.length < 50;
+      draft.mainPosts = draft.mainPosts.concat(action.data);
+      draft.hasMorePost = draft.mainPosts.length === 10;
       break;
     case LOAD_POSTS_FAILURE:
       draft.loadPostsLoading = false;
