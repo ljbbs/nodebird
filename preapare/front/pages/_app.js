@@ -4,6 +4,12 @@ import Head from 'next/head';
 import 'antd/dist/antd.css';
 import wrapper from '../store/configureStore';
 
+/**
+ * 모든 페이지들의 공통 레이아웃
+ * @param Component
+ * @returns {JSX.Element}
+ * @constructor
+ */
 function App({ Component }) {
   return (
     <>
