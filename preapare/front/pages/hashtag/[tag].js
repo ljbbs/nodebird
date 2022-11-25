@@ -1,17 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { Avatar, Card } from 'antd';
 import axios from 'axios';
 import { END } from 'redux-saga';
-import Head from 'next/head';
 import AppLayout from '../../components/AppLayout';
 import PostCard from '../../components/PostCard';
 import wrapper from '../../store/configureStore';
-import { LOAD_MY_INFO_REQUEST, LOAD_USER_REQUEST } from '../../reducers/user';
-import {LOAD_HASHTAG_POSTS_REQUEST, LOAD_USER_POSTS_REQUEST} from '../../reducers/post';
+import { LOAD_MY_INFO_REQUEST } from '../../reducers/user';
+import { LOAD_HASHTAG_POSTS_REQUEST } from '../../reducers/post';
 
-const Hashtag = () => {
+function Hashtag() {
   const dispatch = useDispatch();
   const router = useRouter();
   const { tag } = router.query;
@@ -46,7 +44,7 @@ const Hashtag = () => {
   );
 }
 
-export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req, res, params }) => {
+export const getServerSideProps = wrapper.getServerSideProps((store) => async ({ req, params }) => {
   const cookie = req ? req.headers.cookie : '';
   axios.defaults.headers.Cookie = '';
   if (req && cookie) {

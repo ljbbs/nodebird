@@ -15,7 +15,7 @@ function UserProfile() {
     <Card actions={[
       <div key="twit">
         <Link href={`/user/${me.id}`}>
-          <a>
+          <a href="#!">
             짹짹
             <br />
             {me.Posts.length}
@@ -24,7 +24,7 @@ function UserProfile() {
       </div>,
       <div key="followings">
         <Link href="/profile">
-          <a>
+          <a href="#!">
             팔로잉
             <br />
             {me.Followings.length}
@@ -33,7 +33,7 @@ function UserProfile() {
       </div>,
       <div key="followers">
         <Link href="/profile">
-          <a>
+          <a href="#!">
             팔로워
             <br />
             {me.Followers.length}
@@ -45,7 +45,7 @@ function UserProfile() {
       <Card.Meta
         avatar={(
           <Link href={`/user/${me.id}`}>
-            <a><Avatar>{me.nickname[0]}</Avatar></a>
+            <a href="#!"><Avatar>{me.nickname[0]}</Avatar></a>
           </Link>
         )}
         title={me.nickname}

@@ -4,17 +4,20 @@
   "description": "",
   "main": "pages/index.js",
   "scripts": {
-    "dev": "next -p 3000"
+    "dev": "next -p 3000",
+    "build": "next build"
   },
   "author": "ljbbs",
   "license": "ISC",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@faker-js/faker": "^7.3.0",
+    "@next/bundle-analyzer": "^13.0.5",
     "antd": "^4.21.4",
     "axios": "^0.27.2",
     "babel-plugin-styled-components": "^2.0.7",
     "immer": "^9.0.15",
+    "moment": "^2.29.4",
     "next": "^12.1.6",
     "next-redux-wrapper": "^7.0.5",
     "prop-types": "^15.8.1",

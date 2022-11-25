@@ -47,7 +47,7 @@ function About() {
   );
 }
 
-export const getStaticProps = wrapper.getStaticProps((store) => async ({ req, res, ...etc }) => {
+export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   store.dispatch({
     type: LOAD_USER_REQUEST,
     data: 1,
